@@ -1,4 +1,7 @@
 ## PuckMaster - Air Hockey Game 🏒
+
+![image](https://github.com/user-attachments/assets/eac37dc5-fae3-4e96-9704-c32ebcdb43c7)
+
 Welcome to PuckMaster, a fast-paced Air Hockey game built using Pygame. Challenge yourself or a friend in this classic game of skill and precision. Glide your paddle to outmaneuver your opponent and score goals in this addictive and fun game!
 
 ## 🎮 Features
