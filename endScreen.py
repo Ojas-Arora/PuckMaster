@@ -1,11 +1,12 @@
+import pygame
 import random as rand
 import string
+import sys
+import os
 from startScreen import *
 from globals import *
 
-# game end screen function
-
-
+# Game end screen function
 def game_end(screen, clock, background_color, player_name):
 
     celeb_text = pygame.font.Font(os.path.join(auxDirectory, 'MR ROBOT.ttf'), 140)
@@ -14,12 +15,12 @@ def game_end(screen, clock, background_color, player_name):
 
     while True:
 
-        # to smoothly shine winning message
+        # To smoothly shine winning message
         delay = 0
 
         screen.fill(background_color)
 
-        # set flashing colors
+        # Set flashing colors
         color_x = rand.randint(0, 4)
         color_y = rand.randint(0, 1)
 
@@ -43,18 +44,19 @@ def game_end(screen, clock, background_color, player_name):
                 pygame.quit()
                 sys.exit()
 
-        # print which player won
+        # Print which player won
         if delay == 0:
-            disp_text(screen, "{0} WINS".format(string.upper(player_name)), (width / 2, height / 2 - 150),
+            # Fix: Change string.upper(player_name) to player_name.upper()
+            disp_text(screen, "{0} WINS".format(player_name.upper()), (width / 2, height / 2 - 150),
                       celeb_text, colors[color_x][color_y])
-        # Drawing buttons for reset, menu and exit.
+
+        # Drawing buttons for reset, menu, and exit.
         # Reset button
         if abs(mouse_pos[0] - 200) < buttonRadius and abs(mouse_pos[1] - 470) < buttonRadius:
             button_circle(screen, colors[0][0], (200, 470), "Reset", large_text, (255, 255, 255),
                           (width / 2 - 400, height / 2 + 170))
             if mouse_press[0] == 1:
                 return 1
-
         else:
             button_circle(screen, colors[0][0], (200, 470), "Reset", small_text, (255, 255, 255),
                           (width / 2 - 400, height / 2 + 170))
@@ -65,17 +67,16 @@ def game_end(screen, clock, background_color, player_name):
                           (width / 2, height / 2 + 170))
             if mouse_press[0] == 1:
                 return 2
-
         else:
             button_circle(screen, colors[4][1], (600, 470), "Menu", small_text, (255, 255, 255),
                           (width / 2, height / 2 + 170))
 
-        # quit button
+        # Quit button
         if abs(mouse_pos[0] - 1000) < buttonRadius and abs(mouse_pos[1] - 470) < buttonRadius:
             button_circle(screen, colors[1][1], (1000, 470), "Quit", large_text, (255, 255, 255),
                           (width / 2 + 400, height / 2 + 170))
             if mouse_press[0] == 1:
-                pygame.quit()        
+                pygame.quit()
                 return 3
         else:
             button_circle(screen, colors[1][0], (1000, 470), "Quit", small_text, (255, 255, 255),
